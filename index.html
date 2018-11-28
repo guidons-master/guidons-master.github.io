@@ -303,9 +303,140 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  arduino是一款优秀的开源电子原型平台。包含硬件（各种型号的Arduino板）和软件（Arduino IDE）。由一个欧洲开发团队于2005年冬季开发，在短短的几年后便成为了世界上最受欢迎的开源电子硬件之一，通过对底层的AVR支持库的二次封装，使得对arduino的开发变得更加简单。如果你想更加深入的了解arduino，请访问<a href="http;//www.arduino.cc/">arduino官网</a>,arduino有各种各样的型号,我这里使用的是著名的<strong>arduino uno R3</strong>,这块开发板是我初三那年低价购买的，但由于高中学习任务繁重:blush:这块板子一直吃灰，但是现在有的是时间玩耍了:kissing:。</p>
-<h3 id="关于HC-SR04超声波模块"><a href="#关于HC-SR04超声波模块" class="headerlink" title="关于HC-SR04超声波模块"></a>关于HC-SR04超声波模块</h3><p>  这款模块性能稳定，精度较高，应用广泛，其测量范围是3-450cm。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>arduino是一款优秀的开源电子原型平台。包含硬件（各种型号的Arduino板）和软件（Arduino IDE）。由一个欧洲开发团队于2005年冬季开发，在短短的几年后便成为了世界上最受欢迎的开源电子硬件之一，通过对底层的AVR支持库的二次封装，使得对arduino的开发变得更加简单。如果你想更加深入的了解arduino，请访问<a href="https://www.arduino.cc/" target="_blank" rel="noopener">arduino官网</a>,arduino有各种各样的型号,我这里使用的是著名的<strong>arduino uno r3</strong>,这块开发板是我初三那年低价购得的，但由于高中学习任务繁重，这块板子一直吃灰，但是现在有的是时间玩耍了。<br><a href="https://www.jianshu.com/p/afe07479b2c2" target="_blank" rel="noopener"></a></p>
+</blockquote>
+<h2 id="关于HC-SR04超声波模块"><a href="#关于HC-SR04超声波模块" class="headerlink" title="关于HC-SR04超声波模块"></a>关于HC-SR04超声波模块</h2><p>1.这款模块性能稳定，精度较高，应用广泛，其测量范围是3-450cm。<br>   <img src="http://www.51hei.com/UploadFiles/2014-04/huqin/psu(37" alt="">.jpeg)<br>2.主要技术参数：<br>（1)使用电压：DC5V<br>（2)静态电流：小于2mA<br>（3)电平输出：高5V<br>（4)电平输出：底0V<br>（5)感应角度：不大于15度<br>（6)探测距离：2cm-450cm<br>  (7)高精度：可达0.3cm<br>3.接线方式:<br>   VCC-5V<br>   Trig触发引脚-12<br>   Echo回馈引脚-11<br>   Gnd-地<br>   <img src="https://www.jianshu.com/p/7ff6a098e8ba" alt=""><br>4.使用方法：<br>   一个控制口发一个10US以上的高电平,就可以在接收口等待高电平输出.一有输出就可以开定时器计时,当此口变为低电平时就可以读定时器的值,此时就为此次测距的时间,方可算出距离.如此不断的周期测,就可以达到你移动测量的值了~~<br>5.模块工作原理：<br> (1)采用IO触发测距，给至少10us的高电平信号;<br> (2)模块自动发送8个40khz的方波，自动检测是否有信号返回；<br> (3)有信号返回，通过IO输出一高电平，高电平持续的时间就是超声波从发射到返回的时间．测试距离=(高电平时间*声速(340M/S))/2</p>
+<h3 id="话不多说直接上代码"><a href="#话不多说直接上代码" class="headerlink" title="话不多说直接上代码"></a>话不多说直接上代码</h3><p>‘’’<br>float a,b,c;<br>void setup() {<br>  Serial.begin(9600);<br>  pinMode(12,OUTPUT);<br>  pinMode(11,INPUT);<br>  Serial.println(“distance:”);<br>  pinMode(13,OUTPUT);<br>}</p>
+<p>void loop() {<br>  for (int i=1;i&lt;=3;i++){<br>  digitalWrite(12,LOW);<br>  delayMicroseconds(2);<br>  digitalWrite(12,HIGH);<br>  delayMicroseconds(10);<br>  digitalWrite(12,LOW);<br>  a = pulseIn(11,HIGH)/58.00;<br>  b += a;<br>  }<br>  c =b/3;<br>  Serial.print(c);<br>  if(c&lt;5)<br>  {<br>    digitalWrite(13,HIGH);<br>    }<br>    else<br>    {<br>      digitalWrite(13,LOW);<br>      }<br>  Serial.println(“cm”);<br>  delay(1000);<br>}<br>‘’’</p>
+<ul>
+<li>这里我采用了for循环实现三次结果的累加，然后取平均值以减少误差，当传感器与物体间距小于5cm时，L灯会亮起，移走物体后便会熄灭，虽然程序通过了编译，但烧录进Flash后，串口传输回来的数据却和实际数据相差甚远，我暂时将此问题归咎于引脚焊接的问题，这里就不再深入研究了。</li>
+</ul>
+<blockquote>
+<p><strong>本文作者:</strong> guidons<br><strong>联系方式QQ:</strong> 2280581417<br><strong>版权声明:</strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a>许可协议。转载请注明出处！</p>
+</blockquote>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/hello/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="guidons">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="guidons的小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/27/hello/" itemprop="url">���γ���HC-SR04������ģ��</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T21:41:53+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="j��"><a href="#j��" class="headerlink" title="ǰ��"></a>ǰ��</h2><p>  arduino��һ������Ŀ�Դ����ԭ��ƽ̨������Ӳ���������ͺŵ�Arduino�壩�������Arduino IDE������һ��ŷ�޿����Ŷ���2005�궬���������ڶ̶̵ļ������Ϊ�����������ܻ�ӭ�Ŀ�Դ����Ӳ��֮һ��ͨ���Եײ��AVR֧�ֿ�Ķ��η�װ��ʹ�ö�arduino�Ŀ�����ø��Ӽ򵥡�����������������˽�arduino�������<a href="http;//www.arduino.cc/">arduino����</a>,arduino�и��ָ������ͺ�,������ʹ�õ���������<strong>arduino uno R3</strong>,��鿪�������ҳ�������ͼ۹���ģ������ڸ���ѧϰ�����أ�������һֱ�Իң����������е���ʱ����ˣ�ˡ�</p>
+<h3 id="����HC-SR04������g��"><a href="#����HC-SR04������g��" class="headerlink" title="����HC-SR04������ģ��"></a>����HC-SR04������ģ��</h3><p>1.���ģ�������ȶ������Ƚϸߣ�Ӧ�ù㷺���������Χ��3-450cm��<br>   <img src="http://www.51hei.com/UploadFiles/2014-04/huqin/psu(37" alt="">.jpeg)<br>2.��Ҫ����������<br>��1)ʹ�õ�ѹ��DC5V<br>��2)��̬������С��2mA<br>��3)��ƽ�������5V<br>��4)��ƽ�������0V<br>��5)��Ӧ�Ƕȣ�������15��<br>��6)̽����룺2cm-450cm<br>  (7)�߾��ȣ��ɴ�0.3cm<br>3.���߷�ʽ:<br>   VCC-5V<br>   Trig��������-12<br>   Echo��������-11<br>   Gnd-��<br>   <img src="https://www.jianshu.com/p/7ff6a098e8ba" alt=""><br>4.ʹ�÷�����<br>   һ�����ƿڷ�һ��10US���ϵĸߵ�ƽ,�Ϳ����ڽ��տڵȴ��ߵ�ƽ���.һ������Ϳ��Կ���ʱ����ʱ,���˿ڱ�Ϊ�͵�ƽʱ�Ϳ��Զ���ʱ����ֵ,��ʱ��Ϊ�˴β���ʱ��,�����������.��˲��ϵ����ڲ�,�Ϳ��Դﵽ���ƶ�������ֵ��~~<br>5.ģ�鹤��ԭ��<br> (1)����IO������࣬������10us�ĸߵ�ƽ�ź�;<br> (2)ģ���Զ�����8��40khz�ķ������Զ�����Ƿ����źŷ��أ�<br> (3)���źŷ��أ�ͨ��IO���һ�ߵ�ƽ���ߵ�ƽ������ʱ����ǳ������ӷ��䵽���ص�ʱ�䣮���Ծ���=(�ߵ�ƽʱ��*����(340M/S))/2</p>
+<h3 id="����˵��ֱ���ϴ���"><a href="#����˵��ֱ���ϴ���" class="headerlink" title="����˵��ֱ���ϴ���"></a>����˵��ֱ���ϴ���</h3>
           
         
       
@@ -386,7 +517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -399,7 +530,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
