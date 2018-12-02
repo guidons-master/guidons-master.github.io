@@ -79,25 +79,29 @@
 
 
 
-<meta name="description" content="##前言  最近对IOT设备很感兴趣，于是在某宝上低价购得了一块**nodemcu ch340g开发板，相较于使用AT指令于esp8266交互，nodemcu使用lua脚本语言同时提供了封装esp8266硬件操作的高级API，从而大大降低了开发esp8266模块的难度，而价格又是一大优势，如果你想了解更多的信息，请访问nodemcu官网,不得不说官网风格做的真的很棒，作为一名网络安全爱好者，我很早">
+<meta name="description" content="前言 最近对IOT设备很感兴趣，于是在某宝上低价购得了一块**nodemcu ch340g开发板，相较于使用AT指令于esp8266交互，nodemcu使用lua脚本语言同时提供了封装esp8266硬件操作的高级API，从而大大降低了开发esp8266模块的难度，而价格又是一大优势，如果你想了解更多的信息，请访问nodemcu官网,不得不说官网风格做的真的很棒，作为一名网络安全爱好者，我很早之前就">
 <meta name="keywords" content="关于nodemcu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何将你的nodemcu打造成wifi killer">
 <meta property="og:url" content="http://yoursite.com/2018/11/30/the-next/index.html">
 <meta property="og:site_name" content="guidons的小窝">
-<meta property="og:description" content="##前言  最近对IOT设备很感兴趣，于是在某宝上低价购得了一块**nodemcu ch340g开发板，相较于使用AT指令于esp8266交互，nodemcu使用lua脚本语言同时提供了封装esp8266硬件操作的高级API，从而大大降低了开发esp8266模块的难度，而价格又是一大优势，如果你想了解更多的信息，请访问nodemcu官网,不得不说官网风格做的真的很棒，作为一名网络安全爱好者，我很早">
+<meta property="og:description" content="前言 最近对IOT设备很感兴趣，于是在某宝上低价购得了一块**nodemcu ch340g开发板，相较于使用AT指令于esp8266交互，nodemcu使用lua脚本语言同时提供了封装esp8266硬件操作的高级API，从而大大降低了开发esp8266模块的难度，而价格又是一大优势，如果你想了解更多的信息，请访问nodemcu官网,不得不说官网风格做的真的很棒，作为一名网络安全爱好者，我很早之前就">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/FuQH7n.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/12/02/FuQH7n.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/12/02/FulZcD.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Ful14P.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Ful89f.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/12/02/FulG38.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Ful0Nq.jpg">
-<meta property="og:updated_time" content="2018-12-02T05:18:51.575Z">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/FulB40.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/FulrCV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/FulygU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Fulgu4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/02/Fu1PKg.png">
+<meta property="og:updated_time" content="2018-12-02T08:53:25.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何将你的nodemcu打造成wifi killer">
-<meta name="twitter:description" content="##前言  最近对IOT设备很感兴趣，于是在某宝上低价购得了一块**nodemcu ch340g开发板，相较于使用AT指令于esp8266交互，nodemcu使用lua脚本语言同时提供了封装esp8266硬件操作的高级API，从而大大降低了开发esp8266模块的难度，而价格又是一大优势，如果你想了解更多的信息，请访问nodemcu官网,不得不说官网风格做的真的很棒，作为一名网络安全爱好者，我很早">
+<meta name="twitter:description" content="前言 最近对IOT设备很感兴趣，于是在某宝上低价购得了一块**nodemcu ch340g开发板，相较于使用AT指令于esp8266交互，nodemcu使用lua脚本语言同时提供了封装esp8266硬件操作的高级API，从而大大降低了开发esp8266模块的难度，而价格又是一大优势，如果你想了解更多的信息，请访问nodemcu官网,不得不说官网风格做的真的很棒，作为一名网络安全爱好者，我很早之前就">
 <meta name="twitter:image" content="https://s1.ax1x.com/2018/12/02/FuQH7n.jpg">
 
 
@@ -308,12 +312,13 @@
       
 
       
-        <p>##前言</p>
-<blockquote>
-<p>最近对IOT设备很感兴趣，于是在某宝上低价购得了一块**nodemcu ch340g开发板，相较于使用AT指令于esp8266交互，nodemcu使用lua脚本语言同时提供了封装esp8266硬件操作的高级API，从而大大降低了开发esp8266模块的难度，而价格又是一大优势，如果你想了解更多的信息，请访问<a href="http://www.nodemcu.com/index_cn.html" target="_blank" rel="noopener">nodemcu官网</a>,不得不说官网风格做的真的很棒，作为一名网络安全爱好者，我很早之前就尝试过在orangepi lite开发板上使用mdk3和aircrack-ng实现WiFi DOS攻击，但无奈于开发板的Linux内核版本过低无法启动aircrack-ng组件，因此也就不了了之了，因此当我拿到开发板后就打算将其打造成一款安全利器 ，不久后我便在github上找到了<a href="https://github.com/spacehuhn/esp8266_deauther" target="_blank" rel="noopener">spacehuhn开源项目</a>,通过spacehuhn项目任何人都能够将自己的esp8266模块打造成wifi干扰器，利用802.11wifi协议的漏洞，通过向目标AP和客户端设备发送大量解除认证帧从而使目标断开网络连接，更多的漏洞细节请<a href="https://wenku.baidu.com/view/bb6e705f4a35eefdc8d376eeaeaad1f34793116b.html" target="_blank" rel="noopener">点击这里</a>。<br><img src="https://s1.ax1x.com/2018/12/02/FuQH7n.jpg" alt=""></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>最近对IOT设备很感兴趣，于是在某宝上低价购得了一块**nodemcu ch340g开发板，相较于使用AT指令于esp8266交互，nodemcu使用lua脚本语言同时提供了封装esp8266硬件操作的高级API，从而大大降低了开发esp8266模块的难度，而价格又是一大优势，如果你想了解更多的信息，请访问<a href="http://www.nodemcu.com/index_cn.html" target="_blank" rel="noopener">nodemcu官网</a>,不得不说官网风格做的真的很棒，作为一名网络安全爱好者，我很早之前就尝试过在orangepi lite开发板上使用mdk3和aircrack-ng实现WiFi DOS攻击，但无奈于开发板的Linux内核版本过低无法启动aircrack-ng组件，因此也就不了了之了，因此当我拿到开发板后就打算将其打造成一款安全利器 ，不久后我便在github上找到了<a href="https://github.com/spacehuhn/esp8266_deauther" target="_blank" rel="noopener">spacehuhn开源项目</a>,通过spacehuhn项目任何人都能够将自己的esp8266模块打造成wifi干扰器，利用802.11wifi协议的漏洞，通过向目标AP和客户端设备发送大量解除认证帧从而使目标断开网络连接，更多的漏洞细节请<a href="https://wenku.baidu.com/view/bb6e705f4a35eefdc8d376eeaeaad1f34793116b.html" target="_blank" rel="noopener">点击这里</a>。</p>
 </blockquote>
-<p>##话不多说开始动手<br>  1.我先在github下载了所需<a href="https://github.com/spacehuhn/esp8266_deauther/releases" target="_blank" rel="noopener">固件</a>，然后在windows系统下使用<a href="https://github.com/nodemcu/nodemcu-flasher/tree/master/Win64/Release" target="_blank" rel="noopener">nodemcu-flasher</a>成功将固件烧写进Flash，具体操作如下图：<br><img src="https://s1.ax1x.com/2018/12/02/FuQH7n.jpg" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/FulZcD.png" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/Ful14P.png" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/Ful89f.png" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/FulG38.jpg" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/Ful0Nq.jpg" alt=""><br>  2.烧写成功后，nodemcu会创建一个名为pwned密码为deauther的热点，如果没有的话可以重新拔插一下板子，连上该网络后在浏览器里打开<a href="http://192.168.4.1页面进行管理![](https://s1.ax1x.com/2018/12/02/FulB40.png),进入后可以任意选择目标AP进行攻击![](https://s1.ax1x.com/2018/12/02/FulrCV.png)![](https://s1.ax1x.com/2018/12/02/FulygU.png)这里我使用本寝室的无线网进行测试![](https://s1.ax1x.com/2018/12/02/Fulgu4.png)![](https://s1.ax1x.com/2018/12/02/Fu1PKg.png),尝试结果很成功所有设备全部断网。" target="_blank" rel="noopener">http://192.168.4.1页面进行管理![](https://s1.ax1x.com/2018/12/02/FulB40.png),进入后可以任意选择目标AP进行攻击![](https://s1.ax1x.com/2018/12/02/FulrCV.png)![](https://s1.ax1x.com/2018/12/02/FulygU.png)这里我使用本寝室的无线网进行测试![](https://s1.ax1x.com/2018/12/02/Fulgu4.png)![](https://s1.ax1x.com/2018/12/02/Fu1PKg.png),尝试结果很成功所有设备全部断网。</a>(ps:网页的语言 SSID和密码均可以在setting里修改，强烈建议进行修改)</p>
-<p>##总结<br>  1.经过我的测试，大部分路由器都无法免疫该攻击<br>  2.这里我只进行了deauther攻击的示范，其他攻击就不再一一示范了<br>  3.相较于加入目标网络进行arp攻击的传统方式，这里的攻击手段就显得更加隐蔽高效了。</p>
+<p><img src="https://s1.ax1x.com/2018/12/02/FuQH7n.jpg" alt=""></p>
+<h2 id="话不多说开始动手"><a href="#话不多说开始动手" class="headerlink" title="话不多说开始动手"></a>话不多说开始动手</h2><p>  1.我先在github下载了所需<a href="https://github.com/spacehuhn/esp8266_deauther/releases" target="_blank" rel="noopener">固件</a>，然后在windows系统下使用<a href="https://github.com/nodemcu/nodemcu-flasher/tree/master/Win64/Release" target="_blank" rel="noopener">nodemcu-flasher</a>成功将固件烧写进Flash，具体操作如下图：</p>
+<p><img src="https://s1.ax1x.com/2018/12/02/FulZcD.png" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/Ful14P.png" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/Ful89f.png" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/FulG38.jpg" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/Ful0Nq.jpg" alt=""><br>  2.烧写成功后，nodemcu会创建一个名为pwned密码为deauther的热点，如果没有的话可以重新拔插一下板子，连上该网络后在浏览器里打开<a href="http://192.168.4.1页面进行管理" target="_blank" rel="noopener">http://192.168.4.1页面进行管理</a>,<br><img src="https://s1.ax1x.com/2018/12/02/FulB40.png" alt=""><br>进入后可以任意选择目标AP进行攻击<br><img src="https://s1.ax1x.com/2018/12/02/FulrCV.png" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/FulygU.png" alt=""><br>这里我使用本寝室的无线网进行测试，<br><img src="https://s1.ax1x.com/2018/12/02/Fulgu4.png" alt=""><br><img src="https://s1.ax1x.com/2018/12/02/Fu1PKg.png" alt=""><br>尝试结果很成功，所有设备全部断网。(ps:网页的语言 SSID和密码均可以在setting里修改，强烈建议进行修改)</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  1.经过我的测试，大部分路由器都无法免疫该攻击<br>  2.这里我只进行了deauther攻击的示范，其他攻击就不再一一示范了<br>  3.相较于加入目标网络进行arp攻击的传统方式，这里的攻击手段就显得更加隐蔽高效了。</p>
 <blockquote>
 <p><strong>本文作者:</strong> guidons<br><strong>联系方式QQ:</strong> 2280581417<br><strong>版权声明:</strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a>许可协议。转载请注明出处！</p>
 </blockquote>
@@ -407,8 +412,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -459,6 +473,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#话不多说开始动手"><span class="nav-number">2.</span> <span class="nav-text">话不多说开始动手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
